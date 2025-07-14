@@ -134,11 +134,11 @@ func postReminderHandler(mail_channel chan mail.Mail) gin.HandlerFunc {
 		}
 
 		mailBody := notice.Description
-		if notice.Deadline > 0 {
-			deadlineTime := time.Unix(int64(notice.Deadline)/1000, 0)
-                        deadlineStr := deadlineTime.Format("02 Jan 2006 15:04")
-			mailBody += "\n\nDeadline: " + deadlineStr
-		}
+		// if notice.Deadline > 0 {
+		// 	deadlineTime := time.Unix(int64(notice.Deadline)/1000, 0)
+        //                 deadlineStr := deadlineTime.Format("02 Jan 2006 15:04")
+		// 	mailBody += "\n\nDeadline: " + deadlineStr
+		// }
 
 		mail_channel <- mail.GenerateMails(emails, "Notice: "+notice.Title, mailBody)
 
